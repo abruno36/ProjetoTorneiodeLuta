@@ -502,22 +502,15 @@ a, a:hover, li, li:hover {
     -ms-flex: 1 1 auto !important;
     flex: 1 1 auto !important;
 }
+
+/*Diminuir tamanho do quadro dos Lutadores*/
 #principal{
     margin:0 auto;
     width:790px;
     height:800px
 }
 
-nav {
-    background-color: black;
-    color: #fff;
-    line-height: 50px;
-    padding: 0 10px;
-    width: 100%;
-    position: absolute;
-    top: 0;
-    z-index: 10;
-}
+/*Defini a área de rolagem da tela (paralax)*/
 main {
     margin-top: 50px;
     padding: 0;
