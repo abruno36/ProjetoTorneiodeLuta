@@ -33,7 +33,7 @@
         {
 
             <br />
-            <div id="checkcount"></div>
+            <div id="checkcount" style="text-align: center"></div>
             <br />
             <main id="principal">
             <ul class="list-group">
@@ -99,9 +99,18 @@
     var contador = function () {
         var n = $("input:checked").length;
         $("#checkcount").text(n + (n === 1 ? " Lutador é" : " Lutadores são") + " selecionado(s)");
+        document.getElementById("checkcount").style.fontWeight = "bold";
+        if (n == 20) {
+            document.getElementById("checkcount").style.backgroundColor = "Green";
+            document.getElementById("checkcount").style.color = "White";
+        } else if (n > 20) {
+            document.getElementById("checkcount").style.backgroundColor = "Red";
+            document.getElementById("checkcount").style.color = "White";
+        }
     };
     contador();
     $("input[type=checkbox]").on("click", contador);
+    
 
 </script>
 
