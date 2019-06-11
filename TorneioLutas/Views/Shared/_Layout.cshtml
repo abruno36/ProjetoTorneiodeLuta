@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>@ViewBag.Title Torneio de Lutas</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.typekit.net/yik4cmu.css">
+
+    @Styles.Render("~/default/style")
+
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                    <div class="col-12 col-lg-3 text-left"><img src="/Content/images/T-Systems-Logo.png" class="logo" /></div>
+                    <ul class="header-menu text-right">
+                        <li><a href="@Url.Action("Index", "Home")"><i class="fa fa-columns" aria-hidden="true"></i> Home</a></li>
+                        <li><a href="@Url.Action("Index", "Torneio")"><i class="fa fa-user-o" aria-hidden="true"></i> Torneio de Lutas</a></li>
+                    </ul>
+            </div>
+        </div>
+    </header>
+
+    @RenderBody()
+    <hr />
+    <footer class="container">
+        <p class="text-center">&copy; @DateTime.Now.Year Torneio de Lutas | Todos os Direitos Reservados.</p>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

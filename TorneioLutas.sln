@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TorneioLutas", "TorneioLutas\TorneioLutas.csproj", "{C203390A-31AF-4858-867D-6BC745F7397A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XUnitTestTorneioLutas", "XUnitTestTorneioLutas\XUnitTestTorneioLutas.csproj", "{664E3FD4-187B-46BA-BE6D-9C102DA99F7C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Itens", "Solution Itens", "{F28F3655-4D14-4CD2-87C9-85D187E3029E}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Documents\Projetos-Innova\Abrasca-api\README.md = ..\..\..\Documents\Projetos-Innova\Abrasca-api\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C203390A-31AF-4858-867D-6BC745F7397A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C203390A-31AF-4858-867D-6BC745F7397A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C203390A-31AF-4858-867D-6BC745F7397A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C203390A-31AF-4858-867D-6BC745F7397A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{664E3FD4-187B-46BA-BE6D-9C102DA99F7C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{664E3FD4-187B-46BA-BE6D-9C102DA99F7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{664E3FD4-187B-46BA-BE6D-9C102DA99F7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{664E3FD4-187B-46BA-BE6D-9C102DA99F7C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12A81014-D5C2-4D94-A356-38E175440567}
+	EndGlobalSection
+EndGlobal
