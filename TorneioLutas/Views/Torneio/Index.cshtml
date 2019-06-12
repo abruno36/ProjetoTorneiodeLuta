@@ -36,39 +36,37 @@
             <div id="checkcount" style="text-align: center"></div>
             <br />
             <main id="principal">
-            <ul class="list-group">
-
-
-                @foreach (var item in Model)
-                {
-                    <li class="list-group-item active">
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <div class="input-group-text"><input type="checkbox"></div>
-                                <div class="input-group-text">@Html.DisplayFor(modelItem => item.Nome, new { htmlAttributes = new { @class = "bt_item" } })</div>
+                <ul class="list-group">
+                    @foreach (var item in Model)
+                    {
+                        <li class="list-group-item active">
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <div class="input-group-text"><input type="checkbox"></div>
+                                    <div class="input-group-text">@Html.DisplayFor(modelItem => item.Nome, new { htmlAttributes = new { @class = "bt_item" } })</div>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <label class="control-label">Idade:</label>
-                        @Html.DisplayFor(modelItem => item.Idade, new { htmlAttributes = new { @class = "bt_item" } })
+                        </li>
+                        <li class="list-group-item">
+                            <label class="control-label">Idade:</label>
+                            @Html.DisplayFor(modelItem => item.Idade, new { htmlAttributes = new { @class = "bt_item" } })
 
-                        <label class="control-label">Lutas:</label>
-                        @Html.DisplayFor(modelItem => item.Lutas, new { htmlAttributes = new { @class = "bt_item" } })
+                            <label class="control-label">Lutas:</label>
+                            @Html.DisplayFor(modelItem => item.Lutas, new { htmlAttributes = new { @class = "bt_item" } })
 
-                        <label class="control-label">Derrotas:</label>
-                        @Html.DisplayFor(modelItem => item.Derrotas, new { htmlAttributes = new { @class = "bt_item" } })
+                            <label class="control-label">Derrotas:</label>
+                            @Html.DisplayFor(modelItem => item.Derrotas, new { htmlAttributes = new { @class = "bt_item" } })
 
-                        <label class="control-label">Vitórias:</label>
-                        @Html.DisplayFor(modelItem => item.Vitorias, new { htmlAttributes = new { @class = "bt_item" } })
+                            <label class="control-label">Vitórias:</label>
+                            @Html.DisplayFor(modelItem => item.Vitorias, new { htmlAttributes = new { @class = "bt_item" } })
 
-                        <label class="control-label">Artes Marciais:</label>
-                        @Html.DisplayFor(modelItem => item.ArtesMarciais.Count, new { htmlAttributes = new { @class = "bt_item" } })
-                    </li>
+                            <label class="control-label">Artes Marciais:</label>
+                            @Html.DisplayFor(modelItem => item.ArtesMarciais.Count, new { htmlAttributes = new { @class = "bt_item" } })
+                        </li>
 
 
-                }
-            </ul>
+                    }
+                </ul>
             </main>
         }
     </div>
@@ -106,6 +104,9 @@
         } else if (n > 20) {
             document.getElementById("checkcount").style.backgroundColor = "Red";
             document.getElementById("checkcount").style.color = "White";
+        } else if (n < 20) {
+            document.getElementById("checkcount").style.backgroundColor = "White";
+            document.getElementById("checkcount").style.color = "Black";
         }
     };
     contador();
