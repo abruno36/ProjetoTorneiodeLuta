@@ -19,7 +19,7 @@
 
         @*<button class="btn btn-success mt-3 mb-5" id="button_torneio">Inicio do Torneio</button>*@
         <div class="my-4">
-            <button class="btn btn-primary" type="submit" @*onclick="Torneio()"*@>Inicio do Torneio</button>
+            <button class="btn btn-primary" type="submit" id="submitExpensesLink">Inicio do Torneio</button>
         </div>
         @if (TempData.Keys.Contains("Message"))
         {
@@ -42,7 +42,9 @@
                         <li class="list-group-item active">
                             <div class="input-group">
                                 <div class="input-group-prepend">
-                                    <div class="input-group-text"><input type="checkbox"></div>
+                                    <div class="input-group-text"> @Html.CheckBox("isSubmitted", new
+                                                                   {@id = @Html.DisplayFor(modelItem => item.LutadorId),@class = "submitBox"})
+                                     </div>
                                     <div class="input-group-text">@Html.DisplayFor(modelItem => item.Nome, new { htmlAttributes = new { @class = "bt_item" } })</div>
                                 </div>
                             </div>
@@ -62,11 +64,15 @@
 
                             <label class="control-label">Artes Marciais:</label>
                             @Html.DisplayFor(modelItem => item.ArtesMarciais.Count, new { htmlAttributes = new { @class = "bt_item" } })
-                        </li>
 
+                            <label class="control-label">% Vitórias:</label>
+                            @Html.DisplayFor(modelItem => item.PercentualVitorias, new { htmlAttributes = new { @class = "bt_item" } })%
+                        </li>
+                       
 
                     }
                 </ul>
+                
             </main>
         }
     </div>
@@ -77,21 +83,41 @@
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 
 <script>
-    var Torneio = function () {
-        var arrItem = [];
-        var commaSeparatedIds = "";
 
-        $("#ItemList li input[type=chechbox]").each(function (index, val) {
+    var checkedArray = [];
 
+    $(':checkbox[name=isSubmitted]').on('change', function () {
 
-            debugger
-            var checkId = $(val).attr("Id");
-            var arr = checkId.split('_');
-            var currentCheckboxId = arr[1];
+        checkedArray = $(':checkbox[name=isSubmitted]:checked').map(function () {
+                return this.id;
+            })
+            .get();
+        console.log(checkedArray);
+        PegarLinhasSelecionadas()
+    });
 
-        })
+    
 
-    };
+    $('#submitExpensesLink').click(function () {
+
+        $.ajax({
+            type: "POST",
+            traditional: true,
+            url: "@Url.Action("SubmitExpenses", "Torneio")",
+            data: { lutadoresIDs: checkedArray },
+            success: function () {
+                alert("Success!");
+                console.log(data);
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                if (debug) {
+                    alert(XMLHttpRequest.responseText);
+                    alert(textStatus);
+                    alert(errorThrown);
+                }
+            }
+        });
+    })
 
     //Contador de lutadores selecionados
     var contador = function () {
@@ -112,6 +138,60 @@
     contador();
     $("input[type=checkbox]").on("click", contador);
     
+    function PegarLinhasSelecionadas() {
+        var dataTable = initTable();
+        var arrayValues = [];
+
+        $("input:checked", dataTable.cells().nodes()).each(function () {
+            var rowNumber = $($(this)[0]).attr("numeroLinha");
+            var dataObj = PegarDadosLinha(rowNumber);
+
+            arrayValues.push(dataObj);
+        });
+
+        return arrayValues;
+    }
+
+
+    function PegarDadosLinha(rowNumber) {
+
+        var tipoImpressao = eval($('input[name=tipo]:checked').val());
+        var layoutImpressao = eval($('input[name=colunas]:checked').val());
+
+        var dataObj = {
+            rowCount: rowNumber,
+            CodigoFornecedor: $('#rowInfo' + rowNumber).attr("data-codigoFornecedor"),
+            CodigoItem: $('#rowInfo' + rowNumber).attr("data-codigoItem"),
+            CodigoTiutil: $('#rowInfo' + rowNumber).attr("data-codigoTiutil"),
+            NumeroChamada: $('#rowInfo' + rowNumber).attr("data-numeroChamada"),
+            NumeroVolumeInicial: $('#rowInfo' + rowNumber).attr("data-numeroVolumeInicial"),
+            QtdePorEmbalagem: $('#rowInfo' + rowNumber).attr("data-qtdePorEmbalagem"),
+            VersaoChamada: $('#rowInfo' + rowNumber).attr("data-versaoChamada"),
+            DenominacaoItem: $('#rowInfo' + rowNumber).attr("data-denominacaoItem"),
+            NumeroEmbalagem: $('#rowInfo' + rowNumber).attr("data-numeroEmbalagem"),
+            DenominacaoFornecedor: $('#rowInfo' + rowNumber).attr("data-denominacaoFornecedor"),
+            NumeroVolumeFinal: $('#rowInfo' + rowNumber).attr("data-numeroVolumeFinal"),
+            CapacidadeEmbalagem: $('#rowInfo' + rowNumber).attr("data-capacidadeEmbalagem"),
+            DataEntrega: $('#rowInfo' + rowNumber).attr("data-dataEntrega"),
+            QtdeEntrega: $('#rowInfo' + rowNumber).attr("data-qtdeEntrega"),
+            Volume: $('#rowInfo' + rowNumber).attr("data-volume"),
+            LocalDescarga: $('#rowInfo' + rowNumber).attr("data-localDescarga"),
+            ComprimentoEmbalagem: $('#rowInfo' + rowNumber).attr("data-comprimentoEmbalagem"),
+            LarguraEmbalagem: $('#rowInfo' + rowNumber).attr("data-larguraEmbalagem"),
+            IsEmbalagemGrande: $('#rowInfo' + rowNumber).attr("data-isEmbalagemGrande"),
+            PesoPeca: $('#rowInfo' + rowNumber).attr("data-pesoPeca"),
+            PesoEmbalagem: $('#rowInfo' + rowNumber).attr("data-pesoEmbalagem"),
+            Grupo: $('#rowInfo' + rowNumber).attr("data-grupo"),
+            ImprimirItemFornecedor: $('#rowInfo' + rowNumber).attr("data-ImprimirItemFornecedor"),
+            CodigoItemFornecedor: $('#rowInfo' + rowNumber).attr("data-CodigoItemFornecedor"),
+            TipoImpressao: tipoImpressao,
+            LayoutImpressao: layoutImpressao,
+            QtdePorEmbalagem: $("#qtdePorEmba-" + rowNumber).val()
+        };
+
+        return dataObj;
+    }
+
 
 </script>
 

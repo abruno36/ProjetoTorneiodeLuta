@@ -372,8 +372,6 @@ a, a:hover, li, li:hover {
       word-break: normal; }
     .content .select-div select::-ms-expand {
       display: none; }
-  .content .input-group {
-    }
     .content .input-group .select-div {
       display: flex;
       flex: 1 1 auto;
@@ -506,7 +504,7 @@ a, a:hover, li, li:hover {
 /*Diminuir tamanho do quadro dos Lutadores*/
 #principal{
     margin:0 auto;
-    width:790px;
+    width:850px;
     height:800px
 }
 
@@ -519,4 +517,21 @@ main {
     overflow-y: scroll;
     perspective: 1px;
     color: black;
+}
+
+.act-class {
+    color: #ffffff;
+    text-decoration: none;
+}
+.act-class:active {
+    color: #666666
+}
+
+.act-class:link {
+    color: #ffffff;
+   
+}
+
+.act-class:visited {
+    color: #CCCCCC
 }
